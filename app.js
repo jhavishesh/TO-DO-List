@@ -1,47 +1,48 @@
-const inputtdl = document.querySelector('.input')
-const buttontdl = document.querySelector('.buttoninput')
-const listtdl = document.querySelector('.todolist')
+let lit = document.querySelector('.input')
+let pie = document.querySelector('.buttoninput')
+let pro = document.querySelector('.todolist')
 
 function clickButton(e) {
     e.preventDefault()
 
-    const itemall = document.createElement('div')
+    let itemall = document.createElement('div')
     itemall.classList.add('itemall')
 
-    const item = document.createElement('p')
+    let item = document.createElement('p')
     item.classList.add('item')
-    item.innerText = inputtdl.value
+    item.innerText = lit.value
     itemall.appendChild(item)
 
-    if ( inputtdl.value === '' ) return
+    if ( lit.value === '' ) 
+        return false
 
-    const checkbutton = document.createElement("button")
+    let checkbutton = document.createElement("button")
     checkbutton.innerHTML = '<i class="fa-solid fa-check"></i>' 
     checkbutton.classList.add("check-button")
     itemall.appendChild(checkbutton)
 
-    const trashbutton = document.createElement("button")
-    trashbutton.innerHTML = '<i class="fa-solid fa-trash"></i>' 
-    trashbutton.classList.add("trash-button")
-    itemall.appendChild(trashbutton)
+    let trash = document.createElement("button")
+    trash.innerHTML = '<i class="fa-solid fa-trash"></i>' 
+    trash.classList.add("trash-button")
+    itemall.appendChild(trash)
 
-    listtdl.appendChild(itemall)
-    inputtdl.value = ''
+    pro.appendChild(itemall)
+    lit.value = ''
 }
 
-function okdel(e) {
-    const item = e.target
+function delett(e) {
+    let item = e.target
 
     if ( item.classList[0] === 'check-button') {
-        const todolist = item.parentElement
+        let todolist = item.parentElement
         todolist.classList.toggle('checklist')
     }
 
     if ( item.classList[0] === 'trash-button') {
-        const todolist = item.parentElement
+        let todolist = item.parentElement
         todolist.remove()
     }
 }
 
-buttontdl.addEventListener('click', clickButton)
-listtdl.addEventListener('click', okdel)
+pie.addEventListener('click', clickButton)
+pro.addEventListener('click', delett)
